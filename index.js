@@ -159,10 +159,14 @@ async function sendTEDxTicket(name, email, session) {
     
     let transporter = nodemailer.createTransport({
       service: 'outlook',
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
+      logger: true,
+      debug: true
     });
 
     const mailOptions = {
